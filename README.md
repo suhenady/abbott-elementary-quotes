@@ -1,3 +1,3 @@
 # abbott-elementary-quotes
 
-An app that uses CRUD operations and displays, posts, updates and deletes quotes from Abbott Elementary.
+An app that uses CRUD operations and displays, posts, updates and deletes quotes from Abbott Elementary working with MongoDB, Express and Node.
