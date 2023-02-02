@@ -60,6 +60,53 @@ useUnifiedTopology: true })
                 .catch(error = console.error(error))
         })
 
+        const deleteButton = document.querySelector('#delete-button')
+
+        deleteButton.addEventListener('click', _ => {
+            fetch('/quotes', {
+                method: 'delete',
+                headers: { 'Content-Type' : 'application/json' },
+                body: JSON.stringify({
+                    name: 'Darth Vader'
+                })
+            })
+            .then(res => {
+                if (res.ok) return res.json()
+            })
+            .then(data => {
+                window.location.reload()
+            })
+        })
+
+        app.delete('/quotes', (req, res) => {
+            
+            quotesCollection.deleteOne(
+                { name: req.body.name },
+            )
+            .then(result => {
+                if (result.deletedCount === 0) {
+                    return res.json('No quote to delete')
+                }
+                res.json(`Deleted Darth Vader's quote`)
+            })
+            .catch(error => console.error(error))
+
+        })
+
+        const messageDiv = document.querySelector('#message')
+
+        deleteButton.addEventListener('click', _ => {
+            fetch(/* */)
+                .then(/* */)
+                .then(response => {
+                    if (response === 'No quote to delete') {
+                        messageDiv.textContent = 'No Darth Vader quote to delete'
+                    } else {
+                        window.location(reload(true))
+                    }
+                })
+                .catch(/* */)
+        })
 })
 
 
